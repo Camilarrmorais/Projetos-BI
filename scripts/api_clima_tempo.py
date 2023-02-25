@@ -15,7 +15,7 @@ import boto3
 from pyspark.sql.types import StringType
 
 # Getting data by API
-url = f'http://apiadvisor.climatempo.com.br/api/v1/anl/synoptic/locale/BR?token=your-app-token'
+url = f'http://apiadvisor.climatempo.com.br/api/v1/climate/rain/locale/3477?token=your-app-token'
 print(f'Starting request {url}')
 req = requests.get(url)
 print(req)
