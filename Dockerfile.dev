@@ -54,7 +54,8 @@ RUN pip3 install pyspark==3.2.0 \
 && pip3 install redshift-connector==2.0.907 \
 && pip3 install twilio==7.3.1 \
 && pip3 install joblib==1.1.0 \
-&& pip3 install tableauserverclient==0.19.0
+&& pip3 install tableauserverclient==0.19.0 \
+&& pip3 install python-twitter==3.5
 
 # Setting up Jupyter Lab configuration file
 RUN jupyter-lab --generate-config \
