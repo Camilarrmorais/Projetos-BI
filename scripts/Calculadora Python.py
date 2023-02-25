@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 print("\n******************* Python Calculator *******************")
 
 print("Selecione o número da opção desejada:")

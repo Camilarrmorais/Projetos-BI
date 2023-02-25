@@ -3,7 +3,6 @@ FROM ubuntu:20.04
 # Useful labels
 LABEL version="0.0.1"
 LABEL maintainersNames="Camila Morais"
-LABEL maintainersEmails="camilaraissarodrigues@gmail.com"
 
 # Variables
 ARG ENV=dev
