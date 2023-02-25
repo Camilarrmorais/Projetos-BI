@@ -26,7 +26,6 @@ df = pd.json_normalize(json_salvo_appflow['reports'])
 df_final = pd.DataFrame() # para dar o append dos dataframes tratados de cada linha do arquivo
 
 # Iterar para pegar os valores dos arquivos diferentes, que ficam em linhas diferentes
-
 for row in df.index:
     print(f'Iterating line {row}')
     df_tratado = pd.DataFrame() #Criando dataframe em branco para ir agregando as colunas
@@ -43,9 +42,9 @@ for row in df.index:
         # Tratar e criar dataframe dimensões
         for i in range(0,tamanho_dimensions):
             titulo = dimensions[row][i]
-            titulo=titulo.replace('ga:','') # limpando titulo p não dar problema sql
+            titulo=titulo.replace('ga:','') # limpando titulo para não dar problema no spark sql
             valor_titulo = [r['dimensions'][i] for r in linha_iterar['data.rows'][row]]
-            df_tratado[titulo] = valor_titulo #inserindo coluna no dataframe
+            df_tratado[titulo] = valor_titulo # inserindo coluna no dataframe
         
         print('Treating metrics')
         metrics = linha_iterar['columnHeader.metricHeader.metricHeaderEntries']
@@ -55,11 +54,11 @@ for row in df.index:
         for i in range(0,tamanho_metrics):
             dict = metrics[row][i]
             titulo = dict['name']
-            titulo=titulo.replace('ga:','') # limpando titulo p não dar problema sql
+            titulo=titulo.replace('ga:','') # limpando titulo para não dar problema no spark sql
             valor_titulo = [r['metrics'][0]['values'][i] for r in linha_iterar['data.rows'][row]]
-            df_tratado[titulo] = valor_titulo #inserindo coluna no dataframe
+            df_tratado[titulo] = valor_titulo # inserindo coluna no dataframe
 
-        df_final = pd.concat([df_tratado,df_final],axis=0) #append ao dataframe tratado da linha anterior
+        df_final = pd.concat([df_tratado,df_final],axis=0) # append ao dataframe tratado da linha anterior
     else:
         pass
 
